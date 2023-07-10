@@ -117,10 +117,11 @@ function updateColors(hexColor) {
 
 function updateThemeLink(hexColor) {
   const client = document.getElementById('clients').value;
-  const encodedColor = encodeURIComponent(hexColor).replace('#', '%23');
-  const apiLink = `https://materialdetta.ushie.dev/api?baseColor=${encodedColor}&client=${client}`;
+  const encodedColor = encodeURIComponent(hexColor).replace('%23', '');
+  const apiLink = `https://materialdetta.ushie.dev/api?color=${encodedColor}&client=${client}`;
   document.getElementById('gen-theme-link').value = apiLink;
 }
+
 
 
 document.getElementById('fileInput').addEventListener('change', handleFileInputChange);
