@@ -28,7 +28,7 @@ const scales = {
   900: -0.95,
 };
 
-// Function to handle the file input change event
+
 function handleFileInputChange(event) {
   const file = event.target.files[0];
   const reader = new FileReader();
@@ -49,13 +49,14 @@ function handleFileInputChange(event) {
   reader.readAsDataURL(file);
 }
 
-// Function to handle generating colors based on the input
+
 function generateColors() {
   const hexColor = document.getElementById('hexColorInput').value;
   updateColors(hexColor);
+  updateThemeLink(hexColor);
 }
 
-// Function to convert RGB color values to hexadecimal
+
 function rgbToHex(r, g, b) {
   const componentToHex = (c) => {
     const hex = c.toString(16);
@@ -65,7 +66,6 @@ function rgbToHex(r, g, b) {
   return '#' + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
-// Function to update the root variables with scaled colors
 function updateRootVariables(hexColor) {
   const root = document.documentElement;
 
@@ -78,7 +78,7 @@ function updateRootVariables(hexColor) {
   }
 }
 
-// Function to scale the color based on the scale value
+
 function scaleColor(color, scale) {
   const r = parseInt(color.substring(1, 3), 16);
   const g = parseInt(color.substring(3, 5), 16);
@@ -91,7 +91,7 @@ function scaleColor(color, scale) {
   return rgbToHex(scaledR, scaledG, scaledB);
 }
 
-// Function to update the font color based on the background color
+
 function updateFontColor(backgroundColor) {
   const root = document.documentElement;
   const r = parseInt(backgroundColor.substring(1, 3), 16);
@@ -100,23 +100,31 @@ function updateFontColor(backgroundColor) {
   const brightness = (r * 299 + g * 587 + b * 114) / 1000;
 
   if (brightness > 128) {
-    root.style.setProperty('--text-color', '#000000'); // Light background, use black font color
+    root.style.setProperty('--text-color', '#000000'); 
   } else {
-    root.style.setProperty('--text-color', '#ffffff'); // Dark background, use white font color
+    root.style.setProperty('--text-color', '#ffffff'); 
   }
 }
 
-// Function to update the colors based on the input
+
 function updateColors(hexColor) {
   if (hexColor) {
     updateRootVariables(hexColor);
     updateFontColor(hexColor);
-    document.getElementById('hexColorInput').value = hexColor; // Update the input field with the detected color
+    document.getElementById('hexColorInput').value = hexColor; 
   }
 }
 
-// Add event listener to the file input
+
+function updateThemeLink(hexColor) {
+  const client = document.getElementById('clients').value;
+  const encodedColor = encodeURIComponent(hexColor).replace('#', '%23');
+  const apiLink = `https://materialdetta.ushie.dev/api?baseColor=${encodedColor}&client=${client}`;
+  document.getElementById('gen-theme-link').value = apiLink;
+}
+
+
 document.getElementById('fileInput').addEventListener('change', handleFileInputChange);
 
-// Add event listener to the generate button
+
 document.getElementById('generate').addEventListener('click', generateColors);
