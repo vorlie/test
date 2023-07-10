@@ -28,7 +28,6 @@ const scales = {
   900: -0.95,
 };
 
-
 function handleFileInputChange(event) {
   const file = event.target.files[0];
   const reader = new FileReader();
