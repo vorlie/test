@@ -62,8 +62,9 @@ body{
 .small-title{
     font-weight: 500;
     color: var(--text-color);
-    margin: auto;
     font-size: 20px;
+    position: absolute;
+    bottom: 0;
 }
 
 .pickers{
@@ -72,7 +73,43 @@ body{
     max-width: 300px;
     border-radius: var(--roundness);
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+}
+.login-title{
+    color: var(--text-color);
+    margin: auto;
+    font-size: 30px;
+    font-weight: 600;
+
+}
+.login-inner{
+    padding: 10px;
+    max-width: 300px;
+    color: var(--text-color);
+    background: var(--m3-color-500);
+    border-radius: var(--roundness);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.login-inner img{
+    border-radius: var(--roundness);
+    width: 300px;
+}
+.login-inner p{
+    font-weight: 600;
+    margin: 5px;
+}
+#discordLogin{
+    color: var(--text-color);
+    background: var(--m3-color-400);
+    border: 2px solid transparent;
+    border-radius: 5px;
+    margin: 5px;
+}
+#discordLogin:hover{
+    background: var(--m3-color-300);
+    cursor: pointer;
 }
 #hexColorInput{
     color: var(--text-color);

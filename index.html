@@ -12,13 +12,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/src/css/style.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/discord.js@13.3.1"></script>
     </head>
     <body>
         <div class="main">
-          <p class="small-title">Currently, Vendetta is supported, other clients will have to unfortunately wait until the support is added.</p>
+          
           <div class="title">
             <p>Material You Theme Generator</p>
           </div>
+
           <div class="pickers">
             <div class="file-image">
               <input type="file" id="fileInput" class="file-input" accept="image/*">
@@ -34,13 +36,23 @@
               </select>
             </div>
           </div>
+          <div class="login-outher">
+            <p class="login-title">Fetch color from your Discord avatar</p>
+            <div class="login-inner">
+              <button id="discordLogin">Login with Discord</button>
+              <p>Your avatar:</p>
+              <img src="" alt="User avatar">
+            </div>
+          </div>
           <div class="theme-link">
             <p>Generated Theme Link</p>
             <div class="theme-link-area">
               <input type="text" id="gen-theme-link" readonly placeholder="Generated theme link goes here"> 
             </div>
           </div>
+          <p class="small-title">Currently, Vendetta is supported, other clients will have to unfortunately wait until the support is added.</p>
         </div>
+    <script src="/src/js/discordlogin.js"></script>
     <script src="/src/js/script.js"></script>
     </body>
 </html>
