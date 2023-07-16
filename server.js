@@ -1,9 +1,8 @@
 const express = require('express');
 const app = express();
 
-app.get('/api/secrets', (req, res) => {
+app.get('/api/', (req, res) => {
   const clientSecret = process.env.CLIENT_SECRET;
-  // You can add more environment variables or sensitive data as needed
 
   res.json({ clientSecret });
 });
