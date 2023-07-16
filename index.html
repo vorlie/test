@@ -10,26 +10,15 @@
         <meta property="og:description" content="Temporary homepage for ushie's Material You Theme Generator">
         <meta property="og:url" content="https://materialdetta.vorlie.pl">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <base href="/">
-        <link rel="stylesheet" type="text/css" href="/public/style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="/src/css/style.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
     </head>
     <body>
         <div class="main">
+          <p class="small-title">Currently, Vendetta is supported, other clients will have to unfortunately wait until the support is added.</p>
           <div class="title">
             <p>Material You Theme Generator</p>
           </div>
-          <div class="login-outher">
-            <p class="login-title">Fetch color from your Discord avatar</p>
-            <div class="login-inner">
-              <a id="discordLogin" href="https://discord.com/api/oauth2/authorize?client_id=1130090992129806476&redirect_uri=http%3A%2F%2Flocalhost%3A53134%2Fauth%2Fdiscord&response_type=token&scope=identify" class="bg-discord-blue  text-xl px-5 py-3 rounded-md font-bold flex items-center space-x-4 hover:bg-gray-600 transition duration-75">
-                  <i class="fa-brands fa-discord text-2xl"></i>
-                  <span>Login with Discord</span>
-              </a>
-          </div>
-          </div>
-          <p class="image-title">Or use your background image or hex color</p>
           <div class="pickers">
             <div class="file-image">
               <input type="file" id="fileInput" class="file-input" accept="image/*">
@@ -51,7 +40,6 @@
               <input type="text" id="gen-theme-link" readonly placeholder="Generated theme link goes here"> 
             </div>
           </div>
-          <p class="small-title">Currently, Vendetta is supported, other clients will have to unfortunately wait until the support is added.</p>
         </div>
     <script src="/src/js/script.js"></script>
     </body>
