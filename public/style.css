@@ -75,7 +75,7 @@ body{
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.login-title{
+.login-title,.image-title{
     color: var(--text-color);
     margin: auto;
     font-size: 30px;
@@ -83,7 +83,7 @@ body{
 
 }
 .login-inner{
-    padding: 10px;
+    padding: 1%;
     max-width: 300px;
     color: var(--text-color);
     background: var(--m3-color-500);
@@ -94,7 +94,7 @@ body{
 }
 .login-inner img{
     border-radius: var(--roundness);
-    width: 300px;
+    width: 128px;
 }
 .login-inner p{
     font-weight: 600;
@@ -104,8 +104,9 @@ body{
     color: var(--text-color);
     background: var(--m3-color-400);
     border: 2px solid transparent;
-    border-radius: 5px;
+    border-radius: 10px;
     margin: 5px;
+    padding: 2%;
 }
 #discordLogin:hover{
     background: var(--m3-color-300);

@@ -48,6 +48,26 @@ function handleFileInputChange(event) {
   reader.readAsDataURL(file);
 }
 
+function fetchAvatarColor(avatarUrl) {
+  const img = new Image();
+  img.crossOrigin = 'Anonymous';
+
+  return new Promise((resolve, reject) => {
+    img.onload = function () {
+      const colorThief = new ColorThief();
+      const dominantColor = colorThief.getColor(img);
+      const hexColor = rgbToHex(dominantColor[0], dominantColor[1], dominantColor[2]);
+
+      resolve(hexColor);
+    };
+
+    img.onerror = function () {
+      reject(new Error('Failed to fetch avatar image.'));
+    };
+
+    img.src = avatarUrl;
+  });
+}
 
 function generateColors() {
   const hexColor = document.getElementById('hexColorInput').value;

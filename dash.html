@@ -23,13 +23,11 @@
           <div class="login-outher">
             <p class="login-title">Fetch color from your Discord avatar</p>
             <div class="login-inner">
-              <a id="discordLogin" href="https://discord.com/api/oauth2/authorize?client_id=1130090992129806476&redirect_uri=http%3A%2F%2Flocalhost%3A53134%2Fauth%2Fdiscord&response_type=token&scope=identify" class="bg-discord-blue  text-xl px-5 py-3 rounded-md font-bold flex items-center space-x-4 hover:bg-gray-600 transition duration-75">
-                  <i class="fa-brands fa-discord text-2xl"></i>
-                  <span>Login with Discord</span>
-              </a>
+                  <img src='' id="avatar"/>
+                  <div id="name"></div>
+              <a href="/" class="text-sm mt-5">Logout</a>
+            </div>
           </div>
-          </div>
-          <p class="image-title">Or use your background image or hex color</p>
           <div class="pickers">
             <div class="file-image">
               <input type="file" id="fileInput" class="file-input" accept="image/*">
@@ -54,5 +52,33 @@
           <p class="small-title">Currently, Vendetta is supported, other clients will have to unfortunately wait until the support is added.</p>
         </div>
     <script src="/src/js/script.js"></script>
+    <script>
+ 
+      window.onload = () => {
+        const fragment = new URLSearchParams(window.location.hash.slice(1));
+        const [accessToken, tokenType] = [fragment.get('access_token'), fragment.get('token_type')];
+
+        if (!accessToken) {
+          window.location.href('/');
+        }
+
+        fetch('https://discord.com/api/users/@me', {
+          headers: {
+            authorization: `${tokenType} ${accessToken}`,
+          },
+        })
+          .then((result) => result.json())
+          .then(async (response) => {
+            const { username, avatar, id } = response;
+            document.getElementById('name').innerText = ` ${username}`;
+            document.getElementById('avatar').src = `https://cdn.discordapp.com/avatars/${id}/${avatar}.jpg`;
+
+            const avatarUrl = `https://cdn.discordapp.com/avatars/${id}/${avatar}.jpg`;
+            const avatarColor = await fetchAvatarColor(avatarUrl);
+            updateColors(avatarColor);
+          })
+          .catch(console.error);
+      };
+    </script>
     </body>
 </html>
